@@ -18,7 +18,6 @@ public function index()
     return response()->json($dulces);
 }
 
-<<<<<<< HEAD
 public function delete($id)
 {
     $dulce = Dulce::find($id);
@@ -56,12 +55,10 @@ public function create(Request $request)
 
 
 
-=======
 public function crearDulcePedido(Request $request)
 {
     $dulcePedido = dulce_pedido::create($request->all());
     return response()->json($dulcePedido, 201);
 }
 
->>>>>>> main
 }

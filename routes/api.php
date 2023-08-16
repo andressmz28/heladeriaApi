@@ -46,7 +46,6 @@ Route::get('/topings',      [TopingController::class,'index']);
 //ver salsas
 Route::get('/salsas',       [SalsaController::class,'index']);
 
-<<<<<<< HEAD
 //borrar dulce con id
 Route::delete('/dulces/{id}',[DulceController::class, 'delete']);
 
@@ -118,7 +117,6 @@ Route::put('/salsas/update/{id}', [SalsaController::class, 'update']);
 
 Route::post('/pedidos', 'PedidoController@store');
 Route::get('/pedidos/{id}', 'PedidoController@show');
-=======
 Route::post('/pedidos', [PedidoController::class,'crearPedido']);
 Route::get('/pedidos/{id}', [PedidoController::class,'show']);
 
@@ -128,5 +126,4 @@ Route::post('/fruta-pedido', [FrutaController::class, 'crearFrutaPedido']);
 Route::post('/licor-pedido', [LicorController::class, 'crearLicorPedido']);
 Route::post('/salsa-pedido', [SalsaController::class, 'crearSalsaPedido']);
 Route::post('/toping-pedido', [TopingController::class, 'crearTopingPedido']);
->>>>>>> main
 
