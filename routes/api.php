@@ -9,6 +9,7 @@ use App\Http\Controllers\HeladoController;
 use App\Http\Controllers\LicorController;
 use App\Http\Controllers\TopingController;
 use App\Http\Controllers\SalsaController;
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,13 @@ Route::get('/licores',      [LicorController::class,'index']);
 Route::get('/topings',      [TopingController::class,'index']);
 Route::get('/salsas',       [SalsaController::class,'index']);
 
-Route::post('/pedidos', 'PedidoController@store');
-Route::get('/pedidos/{id}', 'PedidoController@show');
+Route::post('/pedidos', [PedidoController::class,'crearPedido']);
+Route::get('/pedidos/{id}', [PedidoController::class,'show']);
+
+Route::post('/dulce-pedido', [DulceController::class,'crearDulcePedido']);
+Route::post('/especial-pedido', [EspecialController::class, 'crearEspecialPedido']);
+Route::post('/fruta-pedido', [FrutaController::class, 'crearFrutaPedido']);
+Route::post('/licor-pedido', [LicorController::class, 'crearLicorPedido']);
+Route::post('/salsa-pedido', [SalsaController::class, 'crearSalsaPedido']);
+Route::post('/toping-pedido', [TopingController::class, 'crearTopingPedido']);
 
