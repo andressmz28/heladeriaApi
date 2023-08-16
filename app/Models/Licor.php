@@ -9,4 +9,5 @@ class Licor extends Model
 {
     use HasFactory;
     protected $table = 'licor';
+    public $timestamps = false;
 }

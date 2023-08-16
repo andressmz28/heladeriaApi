@@ -18,4 +18,42 @@ class LicorController extends Controller
         return response()->json($licores);
     }
 
+
+public function delete($id)
+{
+    $licor = Licor::find($id);
+    if ($licor) {
+        $licor->delete();
+        return response()->json(['message' => 'Eliminado correctamente'], 201);
+    } else {
+        return response()->json(['error' => 'No existe ese id'], 401);
+    }
+}
+
+public function create(Request $request)
+    {
+        $data = $request->json()->all();
+        $create = new Licor();
+        $create->nombre = $data['nombre'];
+        $create->gramos = $data['gramos'];
+        $create->precio = $data['precio'];
+        $create->save();
+
+        return response()->json($create, 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->json()->all();
+        $update = Licor::find($id);
+        $update->nombre = $data['nombre'];
+        $update->gramos = $data['gramos'];
+        $update->precio = $data['precio'];
+
+        $update->save();
+        return response()->json($update, 201);
+    }
+
+
+
 }
