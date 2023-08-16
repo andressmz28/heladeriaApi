@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Salsa;
+use App\Models\salsa_pedido;
 
 class SalsaController extends Controller
 {
@@ -17,6 +18,7 @@ public function index()
     return response()->json($salsas);
 }
 
+<<<<<<< HEAD
 
 public function delete($id)
 {
@@ -55,4 +57,11 @@ public function create(Request $request)
 
 
 
+=======
+    public function crearSalsaPedido(Request $request)
+    {
+        $salsaPedido = salsa_pedido::create($request->all());
+        return response()->json($salsaPedido, 201);
+    }
+>>>>>>> main
 }

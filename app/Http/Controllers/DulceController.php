@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dulce;
+use App\Models\dulce_pedido;
 
 class DulceController extends Controller
 {
@@ -17,6 +18,7 @@ public function index()
     return response()->json($dulces);
 }
 
+<<<<<<< HEAD
 public function delete($id)
 {
     $dulce = Dulce::find($id);
@@ -54,4 +56,12 @@ public function create(Request $request)
 
 
 
+=======
+public function crearDulcePedido(Request $request)
+{
+    $dulcePedido = dulce_pedido::create($request->all());
+    return response()->json($dulcePedido, 201);
+}
+
+>>>>>>> main
 }
