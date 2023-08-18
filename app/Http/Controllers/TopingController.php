@@ -60,5 +60,10 @@ public function create(Request $request)
     }
 
 
+    public function cantidad()
+{
+    $count = Toping::count();
+    return response()->json([$count]);
+}
 
 }

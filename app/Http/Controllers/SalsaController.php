@@ -61,4 +61,10 @@ public function create(Request $request)
         $salsaPedido = salsa_pedido::create($request->all());
         return response()->json($salsaPedido, 201);
     }
+
+    public function cantidad()
+{
+    $count = Salsa::count();
+    return response()->json([$count]);
+}
 }

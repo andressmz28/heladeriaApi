@@ -17,4 +17,10 @@ public function index()
     return response()->json($helados);
 }
 
+public function cantidad()
+{
+    $count = Helado::count();
+    return response()->json([$count]);
+}
+
 }

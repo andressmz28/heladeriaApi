@@ -61,4 +61,10 @@ public function crearDulcePedido(Request $request)
     return response()->json($dulcePedido, 201);
 }
 
+public function cantidad()
+{
+    $count = Dulce::count();
+    return response()->json([$count]);
+}
+
 }

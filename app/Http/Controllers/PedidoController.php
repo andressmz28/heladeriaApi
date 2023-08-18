@@ -36,4 +36,10 @@ public function show($id)
     return response()->json($pedido);
 }
 
+public function cantidadPedidosNoAtendidos()
+{
+    $count = Pedido::where('atendido', 0)->count();
+    return response()->json([$count]);
+}
+
 }

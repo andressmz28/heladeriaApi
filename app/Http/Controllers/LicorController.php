@@ -60,6 +60,11 @@ public function create(Request $request)
         return response()->json($update, 201);
     }
 
+    public function cantidad()
+{
+    $count = Licor::count();
+    return response()->json([$count]);
+}
 
 
 }
