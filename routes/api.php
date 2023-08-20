@@ -10,6 +10,13 @@ use App\Http\Controllers\LicorController;
 use App\Http\Controllers\TopingController;
 use App\Http\Controllers\SalsaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\DulcePedidoController;
+use App\Http\Controllers\EspecialPedidoController;
+use App\Http\Controllers\FrutaPedidoController;
+use App\Http\Controllers\LicorPedidoController;
+use App\Http\Controllers\SalsaPedidoController;
+use App\Http\Controllers\TopingPedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +119,31 @@ Route::get('/salsas/cantidad',[SalsaController::class,'cantidad']);
 Route::get('/frutas/cantidad',[FrutaController::class,'cantidad']);
 Route::get('/topings/cantidad',[TopingController::class,'cantidad']);
 Route::get('/pedidos/cantidadNoAtendido',[PedidoController::class,'cantidadPedidosNoAtendidos']);
+Route::get('/pedidos/cantidadNoAtendido2',[PedidoController::class,'cantidadPedidosNoAtendidos2']);
+Route::get('/pedidos/pedidosUsuario/{userId}', [PedidoController::class, 'pedidosUsuario']);
+Route::get('/pedidos/pedidosUsuariosAdmin', [PedidoController::class, 'pedidosUsuariosAdmin']);
+Route::get('/dulcesPedido/obtenerNombresDulcesPorPedido/{pedidoId}', [DulcePedidoController::class, 'obtenerNombresDulcesPorPedido']);
+Route::get('/frutasPedido/nombres/{pedidoId}', [FrutaPedidoController::class, 'obtenerNombresFrutasPorPedido']);
+Route::get('/especialesPedido/nombres/{pedidoId}', [EspecialPedidoController::class, 'obtenerNombresEspecialesPorPedido']);
+Route::get('/licoresPedido/nombres/{pedidoId}', [LicorPedidoController::class, 'obtenerNombresLicoresPorPedido']);
+Route::get('/salsasPedido/nombres/{pedidoId}', [SalsaPedidoController::class, 'obtenerNombresSalsasPorPedido']);
+Route::get('/topingsPedido/nombres/{pedidoId}', [TopingPedidoController::class, 'obtenerNombresTopingsPorPedido']);
+Route::put('/pedidos/{pedidoId}/marcar-atendido', [PedidoController::class, 'marcarComoAtendido']);
+Route::get('/usuarios',[UsuarioController::class,'index']);
+Route::delete('/usuarios/{id}',[UsuarioController::class, 'delete']);
+Route::post('/usuarios/create',[UsuarioController::class, 'create']);
+Route::put('/usuarios/update/{id}', [UsuarioController::class, 'update']);
+Route::post('/helados/create',[HeladoController::class, 'create']);
+Route::put('/helados/update/{id}', [HeladoController::class, 'update']);
+Route::delete('/helados/{id}',[HeladoController::class, 'delete']);
+
+
+
+
+
 
 Route::post('/pedidos', 'PedidoController@store');
 Route::get('/pedidos/{id}', 'PedidoController@show');
+
+
+
