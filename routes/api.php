@@ -142,7 +142,7 @@ Route::delete('/helados/{id}',[HeladoController::class, 'delete']);
 
 
 
-Route::post('/pedidos', 'PedidoController@store');
+Route::post('/pedidos', [PedidoController::class, 'store']);
 Route::get('/pedidos/{id}', 'PedidoController@show');
 
 
