@@ -137,10 +137,15 @@ Route::post('/helados/create',[HeladoController::class, 'create']);
 Route::put('/helados/update/{id}', [HeladoController::class, 'update']);
 Route::delete('/helados/{id}',[HeladoController::class, 'delete']);
 
+Route::post('/dulce-pedido', [DulceController::class], 'crearDulcePedido');
+Route::post('/especial-pedido', [EspecialController::class], 'crearEspecialPedido');
+Route::post('/fruta-pedido', [FrutaController::class], 'crearFrutaPedido');
+Route::post('/licor-pedido', [LicorController::class], 'crearLicorPedido');
+Route::post('/salsa-pedido', [SalsaController::class], 'crearSalsaPedido');
+Route::post('/toping-pedido', [TopingController::class], 'crearTopingPedido');
 
 
-
-
+Route::post('/usuarios/login', [UsuarioController::class, 'login']);
 
 Route::post('/pedidos', [PedidoController::class, 'store']);
 Route::get('/pedidos/{id}', 'PedidoController@show');

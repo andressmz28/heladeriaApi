@@ -67,4 +67,28 @@ class UsuarioController extends Controller
         $update->save();
         return response()->json($update, 201);
     }
+
+
+    public function login(Request $request)
+    {
+        $data = $request->validate([
+            'correo' => 'required|email',
+            'contrasena' => 'required|string',
+        ]);
+
+        $correo = $data['correo'];
+        $contrasena = $data['contrasena'];
+
+        $usuario = Usuario::where('correo', $correo)
+            ->where('contrasena', $contrasena)
+            ->first();
+
+        if ($usuario) {
+            // Credenciales correctas
+            return response()->json(['message' => 'Inicio de sesión exitoso', 'usuario' => $usuario], 200);
+        } else {
+            // Credenciales incorrectas
+            return response()->json(['error' => 'Credenciales incorrectas'], 401);
+        }
+    }
 }
