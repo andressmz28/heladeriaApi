@@ -146,4 +146,10 @@ Route::post('/pedidos', [PedidoController::class, 'store']);
 Route::get('/pedidos/{id}', 'PedidoController@show');
 
 
+Route::post('/dulce-pedido', [DulceController::class,'crearDulcePedido']);
+Route::post('/especial-pedido', [EspecialController::class, 'crearEspecialPedido']);
+Route::post('/fruta-pedido', [FrutaController::class, 'crearFrutaPedido']);
+Route::post('/licor-pedido', [LicorController::class, 'crearLicorPedido']);
+Route::post('/salsa-pedido', [SalsaController::class, 'crearSalsaPedido']);
+Route::post('/toping-pedido', [TopingController::class, 'crearTopingPedido']);
 
