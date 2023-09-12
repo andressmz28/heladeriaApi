@@ -17,6 +17,8 @@ use App\Http\Controllers\FrutaPedidoController;
 use App\Http\Controllers\LicorPedidoController;
 use App\Http\Controllers\SalsaPedidoController;
 use App\Http\Controllers\TopingPedidoController;
+use App\Http\Controllers\RecuperarContrasenaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,11 @@ use App\Http\Controllers\TopingPedidoController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::post('/recuperar-contrasena', [RecuperarContrasenaController::class, 'enviarCodigo']);
+
+
+
+
 Route::post('/registrar-usuario', [UsuarioController::class, 'registrarUsuario']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
