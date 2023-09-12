@@ -20,7 +20,8 @@ class RecuperarContrasenaController extends Controller
             ]);
     
             // Generar un código aleatorio
-            $codigoRecuperacion = Str::random(8);
+            $codigoRecuperacion = rand(1000, 9999);
+
            // Puedes ajustar la longitud según tus necesidades
     
             // Envía el correo electrónico con el código de recuperación
