@@ -18,7 +18,7 @@ use App\Http\Controllers\LicorPedidoController;
 use App\Http\Controllers\SalsaPedidoController;
 use App\Http\Controllers\TopingPedidoController;
 use App\Http\Controllers\RecuperarContrasenaController;
-
+use App\Http\Controllers\ActualizarContrasenaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +32,12 @@ use App\Http\Controllers\RecuperarContrasenaController;
 */
 Route::post('/recuperar-contrasena', [RecuperarContrasenaController::class, 'enviarCodigo']);
 
+Route::post('/actualizar-contrasena', [ActualizarContrasenaController::class, 'actualizarContrasena']);
+
+
+
+
+Route::get('/obtener-codigo-recuperacion', 'CodigoRecuperacionController@obtenerCodigoRecuperacion');
 
 
 
