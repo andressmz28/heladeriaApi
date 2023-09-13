@@ -24,9 +24,9 @@ class RecuperarContrasenaController extends Controller
             // Envía el correo electrónico con el código de recuperación
             Mail::to($request->input('email'))->send(new CodigoRecuperacionMail($codigoRecuperacion));
 
-            // Almacena el código generado en la sesión del usuario
+            // Almacena el correo electrónico y el código generado en la sesión del usuario
+            Session::put('correo_recuperacion', $request->input('email'));
             Session::put('codigo_recuperacion', $codigoRecuperacion);
-            
 
             // Devuelve una respuesta
             return response()->json(['message' => 'Código de recuperación enviado con éxito']);
@@ -34,6 +34,7 @@ class RecuperarContrasenaController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
 
   
 }
