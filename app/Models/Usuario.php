@@ -11,8 +11,12 @@ class Usuario extends Model
 
 {
 
-    
    public $timestamps = false;
     protected $table = 'users'; // Nombre de la tabla en la base de datos
     protected $fillable = ['nombre', 'apellido', 'correo', 'contrasena'];
+    
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'user_id');
+    }
 }

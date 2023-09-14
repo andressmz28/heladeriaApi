@@ -91,4 +91,27 @@ class UsuarioController extends Controller
             return response()->json(['error' => 'Credenciales incorrectas'], 401);
         }
     }
+
+    public function getUserPedidos()
+    {
+        $usuariosConTotalPedidos = Usuario::select('users.id as user_id', 'users.nombre as user_nombre')
+    ->withCount(['pedidos' => function ($query) {
+        $query->where('atendido', 0); // Filtrar pedidos no atendidos.
+    }])
+    ->has('pedidos', '>', 0) // Esto asegura que solo se incluyan usuarios que tengan pedidos.
+    ->having('pedidos_count', '>', 0) // Esto excluye a los usuarios con pedidos_count igual a 0.
+    ->selectSub(function ($query) {
+        // Subconsulta para calcular la suma de dinero de los pedidos
+        $query->selectRaw('SUM(h.precio + IFNULL((SELECT SUM(du.precio) FROM dulce_pedido dp LEFT JOIN dulces du ON dp.dulce_id = du.id WHERE dp.pedido_id = pedidos.id), 0) + IFNULL((SELECT SUM(fr.precio) FROM fruta_pedido fp LEFT JOIN frutas fr ON fp.fruta_id = fr.id WHERE fp.pedido_id = pedidos.id), 0) + IFNULL((SELECT SUM(e.precio) FROM especial_pedido ep LEFT JOIN especiales e ON ep.especial_id = e.id WHERE ep.pedido_id = pedidos.id), 0) + IFNULL((SELECT SUM(l.precio) FROM licor_pedido lp LEFT JOIN licor l ON lp.licor_id = l.id WHERE lp.pedido_id = pedidos.id), 0) + IFNULL((SELECT SUM(s.precio) FROM salsa_pedido sp LEFT JOIN salsas s ON sp.salsa_id = s.id WHERE sp.pedido_id = pedidos.id), 0) + IFNULL((SELECT SUM(t.precio) FROM toping_pedido tp LEFT JOIN topings t ON tp.toping_id = t.id WHERE tp.pedido_id = pedidos.id), 0))')
+            ->from('pedidos')
+            ->leftJoin('helados as h', 'pedidos.helado_id', '=', 'h.id')
+            ->whereColumn('pedidos.user_id', 'users.id')
+            ->where('pedidos.atendido', 0);
+    }, 'total_dinero_pedidos')
+    ->get();
+
+return response()->json($usuariosConTotalPedidos);
+
+    }
+
 }

@@ -170,4 +170,15 @@ Route::post('/fruta-pedido', [FrutaController::class, 'crearFrutaPedido']);
 Route::post('/licor-pedido', [LicorController::class, 'crearLicorPedido']);
 Route::post('/salsa-pedido', [SalsaController::class, 'crearSalsaPedido']);
 Route::post('/toping-pedido', [TopingController::class, 'crearTopingPedido']);
+Route::get('/usuarios/usuariosPedidos', [UsuarioController::class, 'getUserPedidos']);
+Route::delete('/pedidos/eliminar/{id}', [PedidoController::class, 'eliminarPedido']);
+Route::get('/pedidos/totalPedido/{userId}',  [PedidoController::class, 'sumaTotalPrecioPedidos']);
+Route::delete('/usuarios/{userId}/borrar-pedidos', [PedidoController::class, 'borrarPedidosUsuario']);
+Route::post('/pedidos/marcar-pedidos/{userId}', [PedidoController::class,'marcarPedidosComoAtendidos']);
+Route::get('/pedidos/{userId}/con-suma-ingredientes', [PedidoController::class,'obtenerPedidosConSumaIngredientes']);
+
+
+
+
+
 
